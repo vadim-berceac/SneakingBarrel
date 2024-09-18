@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102ba3775b717104e8614bf2f85f8c1b, type: 3}
+  m_Name: StatesInstaller
+  m_EditorClassIdentifier: 
+  _idle: {fileID: 11400000, guid: 9612f166fcec88042b08bea915fdf401, type: 2}
+  _move: {fileID: 11400000, guid: 131fc9a35d07698428a9a15b1f03dd30, type: 2}
+  _rotation: {fileID: 11400000, guid: a7e9818b4e7e70048ba82dbd57f78809, type: 2}
