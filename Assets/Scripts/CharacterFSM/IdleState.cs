@@ -15,8 +15,9 @@ public class IdleState : State
 
     protected override void SwitchCheck(CharacterFSM controller)
     {
-        if (controller.Input.GetDirection() != Vector2.zero)
+        if (controller.Input.IsMoving)
         {
+            Debug.LogWarning(2);
             SwitchToState(controller, _moveState);
         }
     }

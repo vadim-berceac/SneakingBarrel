@@ -9,15 +9,12 @@ public abstract class State : ScriptableObject
 
     protected State _idleState;
     protected State _moveState;
-    protected State _rotationState;
 
     [Inject]
-    private void Construct(IdleState idleState, MoveState moveState,
-        RotationState rotationState)
+    private void Construct(IdleState idleState, MoveState moveState)
     {
         _idleState = idleState;
         _moveState = moveState;
-        _rotationState = rotationState;
     }
 
     protected abstract void SwitchCheck(CharacterFSM controller);

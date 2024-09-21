@@ -1,35 +1,29 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 public class CharacterFSM : MonoBehaviour 
 {
     [SerializeField] private bool _isAI = false;
-    [SerializeField] private IInputSource _input;
+    [SerializeField] private IFSMInput _input;
     [SerializeField] private Animator _animator;
-
-
-    [Header("Character params")]
-    [SerializeField] private float _speed = 4f;
 
     private Transform _cachedTransform;
     private State _currentState = null;
 
-    public IInputSource Input => _input;
+    public IFSMInput Input => _input;
     public Animator Animator => _animator;
     public Transform CachedTransform => _cachedTransform;
     public State CurrentState => _currentState;
-    public float Speed => _speed;
 
     [Inject]
-    private void Construct(IdleState idleState, AiInput aiInput)
+    private void Construct(IdleState idleState)
     {
-        _currentState = idleState;       
-        _input = aiInput;
+        _currentState = idleState; 
     }
 
     private void Awake()
     {
+        _input = GetComponent<IFSMInput>();
         _cachedTransform = transform;
         _currentState.EnterState(this);
     }

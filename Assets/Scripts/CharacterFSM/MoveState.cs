@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MoveState", menuName = "Scriptable Objects/MoveState")]
 public class MoveState : State
 {
+    private readonly float _animationMinSpeed = 1f;
     public override void EnterState(CharacterFSM controller)
     {
         controller.Animator.CrossFade(_animationName, _crossFadeTime, _animationLayer);
@@ -10,12 +11,12 @@ public class MoveState : State
 
     protected override void ExitState(CharacterFSM controller)
     {
-        
+        controller.Animator.SetFloat("CurrentVelocity", _animationMinSpeed);
     }
 
     protected override void SwitchCheck(CharacterFSM controller)
     {
-        if (controller.Input.GetDirection() == Vector2.zero)
+        if (!controller.Input.IsMoving)
         {
             SwitchToState(controller, _idleState);
         }
@@ -23,15 +24,23 @@ public class MoveState : State
 
     public override void UpdateState(CharacterFSM controller)
     {
-        Debug.Log("test move");
         SwitchCheck(controller);
-        MoveCharacter(controller, controller.Input.GetDirection());
+        Rotate(controller);
+        if(controller.Input.CurrentVelocity > _animationMinSpeed)
+        {
+            controller.Animator.SetFloat("CurrentVelocity", controller.Input.CurrentVelocity);
+        }
+        else
+        {
+            controller.Animator.SetFloat("CurrentVelocity", _animationMinSpeed);
+        }
     }
 
-    private void MoveCharacter(CharacterFSM controller, Vector2 direction)
+    private void Rotate(CharacterFSM controller)
     {
-        direction = direction.normalized;
-        controller.CachedTransform.Translate(controller.Speed * Time.deltaTime 
-            * new Vector3(direction.x, 0, direction.y));
+        Quaternion lookRotation = Quaternion.LookRotation
+            (new Vector3(controller.Input.RotationDirection.x, 0, controller.Input.RotationDirection.z));
+        controller.CachedTransform.rotation = Quaternion.Slerp
+            (controller.CachedTransform.rotation, lookRotation, Time.deltaTime * 5);
     }
 }
