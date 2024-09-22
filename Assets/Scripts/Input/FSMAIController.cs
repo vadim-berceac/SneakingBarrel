@@ -59,7 +59,7 @@ public class FSMAIController : MonoBehaviour, IFSMInput
     private Vector3 GetRandomPointOnNavMesh()
     {
         Vector3 randomDirection = Random.insideUnitSphere * _randomNavMeshPointRadius;
-        randomDirection += transform.position;
+        randomDirection += _cashedTransform.position;
         NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, _randomNavMeshPointRadius, NavMesh.AllAreas);
         return hit.position;
     }
