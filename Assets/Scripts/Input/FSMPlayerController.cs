@@ -6,7 +6,8 @@ public class FSMPlayerController : MonoBehaviour, IFSMInput
 {
     [SerializeField] private InputActionAsset _inputActions;
     [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private Collider _playerCollider;
+    [SerializeField] private CharacterFSM _characterFSM;
+    [SerializeField] private Collider _collider;
     private InputAction _moveAction;
     private Transform _cashedTransform;
     private Vector3 _targetDirection;
@@ -17,6 +18,7 @@ public class FSMPlayerController : MonoBehaviour, IFSMInput
     private readonly float _smoothing = 0.25f;
 
     public bool IsMoving => _moveVector != Vector3.zero;
+    public CharacterFSM CharacterFSM => _characterFSM;
     public Vector3 RotationDirection => _rotationDirection;
 
     public float CurrentVelocity => _agent.velocity.sqrMagnitude;
@@ -41,7 +43,7 @@ public class FSMPlayerController : MonoBehaviour, IFSMInput
 
     private void Update()
     {
-        _playerCollider.enabled = IsMoving;
+        _collider.enabled = IsMoving;
         UpdateMovement();
         UpdateRotationDirection();
     }
