@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c018f13ee8454e4baa33abdf5b5946e, type: 3}
-  m_Name: AttackState
+  m_Script: {fileID: 11500000, guid: cc26227435fb25c40a62d43b0d99c845, type: 3}
+  m_Name: PlayerInstaller
   m_EditorClassIdentifier: 
-  _animationName: Attack
-  _animationLayer: 0
-  _crossFadeTime: 0.1

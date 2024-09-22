@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: idle
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -75,7 +75,7 @@ AnimatorStateMachine:
     m_Position: {x: 470, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7679717892766705612}
-    m_Position: {x: 505, y: 245, z: 0}
+    m_Position: {x: 470, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1253626275244807492}
     m_Position: {x: 30, y: 200, z: 0}
@@ -151,7 +151,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Attack
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -185,13 +185,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 2550b8ab4e6784ada82159618f666f55, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: CurrentVelocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 

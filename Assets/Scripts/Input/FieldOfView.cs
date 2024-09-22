@@ -9,8 +9,6 @@ internal class FieldOfView : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player")) { return; }
         _playerPosition = other.transform.position;
-
-        Debug.LogWarning("вижу игрока");
     }
 
     private void OnTriggerExit(Collider other)

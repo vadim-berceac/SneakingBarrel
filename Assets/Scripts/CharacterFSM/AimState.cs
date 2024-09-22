@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AttackState", menuName = "Scriptable Objects/AttackState")]
-public class AttackState : State
+[CreateAssetMenu(fileName = "AimState", menuName = "Scriptable Objects/AimState")]
+public class AimState : State
 {
     public override void EnterState(CharacterFSM controller)
     {
@@ -16,14 +16,19 @@ public class AttackState : State
 
     protected override void ExitState(CharacterFSM controller)
     {
-        
+
     }
 
     protected override void SwitchCheck(CharacterFSM controller)
     {
-        if (controller.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        if (!controller.Input.CanAttack && controller.IsAI)
         {
             SwitchToState(controller, _idleState);
+        }
+
+        if (controller.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        {
+            SwitchToState(controller, _attackState);
         }
     }
 }

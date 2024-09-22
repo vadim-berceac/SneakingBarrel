@@ -1,15 +1,21 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 public class FSMAIController : MonoBehaviour, IFSMInput
 {
+    [Header("Agent Settings")]
     [SerializeField] private FieldOfView _fieldOfView;
     [SerializeField] private NavMeshAgent _agent;
+    [SerializeField] private float _randomNavMeshPointRadius = 15f;
     [SerializeField] private float _minPointSpawnInterval = 3f;
     [SerializeField] private float _maxPointSpawnInterval = 12f;
     [SerializeField] private float _acceleration = 2f;
     [SerializeField] private float _deceleration = 60f;
     [SerializeField] private float _closeEnoughMeters = 4f;
+
+    [Header("Alarm Settings")]
+    [SerializeField] private GameObject _alarmSign;
 
     private float _currentPointSpawnInterval;
     private float _timer = 0f;
@@ -17,6 +23,7 @@ public class FSMAIController : MonoBehaviour, IFSMInput
     private Vector3 _rotationDirection = Vector3.zero;
     private bool _canAttack = false;
     private Transform _cashedTransform;
+    private float _basicAgentSpeed;
     public bool IsMoving => _agent.velocity.sqrMagnitude > 0;
     public float CurrentVelocity => _agent.velocity.sqrMagnitude;
     public Vector3 RotationDirection => _rotationDirection;
@@ -24,6 +31,7 @@ public class FSMAIController : MonoBehaviour, IFSMInput
 
     private void Awake()
     {
+        _basicAgentSpeed = _agent.speed;  
         _cashedTransform = transform;
         _currentPointSpawnInterval = Random.Range(_minPointSpawnInterval, _maxPointSpawnInterval);
     }
@@ -50,9 +58,9 @@ public class FSMAIController : MonoBehaviour, IFSMInput
 
     private Vector3 GetRandomPointOnNavMesh()
     {
-        Vector3 randomDirection =Random.insideUnitSphere * 10f;
+        Vector3 randomDirection = Random.insideUnitSphere * _randomNavMeshPointRadius;
         randomDirection += transform.position;
-        NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, 10f, NavMesh.AllAreas);
+        NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, _randomNavMeshPointRadius, NavMesh.AllAreas);
         return hit.position;
     }
 
@@ -79,11 +87,15 @@ public class FSMAIController : MonoBehaviour, IFSMInput
 
     private void UpdateAttack()
     {
-        if(_fieldOfView.PlayerPosition == Vector3.zero || _rotationDirection != Vector3.zero)
+        if(_fieldOfView.PlayerPosition == Vector3.zero)
         {
+            _alarmSign.SetActive(false);
             _canAttack = false;
+            _agent.speed = _basicAgentSpeed;
             return;
         }
+        _alarmSign.SetActive(true);
+        _agent.speed = 0;
         _canAttack = true;
     }
 }

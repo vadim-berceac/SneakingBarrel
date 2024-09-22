@@ -9,14 +9,16 @@ public abstract class State : ScriptableObject
 
     protected State _idleState;
     protected State _moveState;
+    protected State _aimState;
     protected State _attackState;
 
     [Inject]
     private void Construct(IdleState idleState, MoveState moveState,
-        AttackState attackState)
+        AttackState attackState, AimState aimState)
     {
         _idleState = idleState;
         _moveState = moveState;
+        _aimState = aimState;
         _attackState = attackState;
     }
 

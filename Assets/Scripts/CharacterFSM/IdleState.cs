@@ -15,6 +15,10 @@ public class IdleState : State
 
     protected override void SwitchCheck(CharacterFSM controller)
     {
+        if (controller.Input.CanAttack && controller.IsAI)
+        {
+            SwitchToState(controller, _aimState);
+        }
         if (controller.Input.IsMoving)
         {
             SwitchToState(controller, _moveState);

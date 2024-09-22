@@ -3,12 +3,14 @@ using Zenject;
 
 public class CharacterFSM : MonoBehaviour 
 {
+    [SerializeField] private bool _isAI = false;
     [SerializeField] private IFSMInput _input;
     [SerializeField] private Animator _animator;
 
     private Transform _cachedTransform;
     private State _currentState = null;
 
+    public bool IsAI => _isAI;
     public IFSMInput Input => _input;
     public Animator Animator => _animator;
     public Transform CachedTransform => _cachedTransform;
