@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _idle: {fileID: 11400000, guid: 9612f166fcec88042b08bea915fdf401, type: 2}
   _move: {fileID: 11400000, guid: 131fc9a35d07698428a9a15b1f03dd30, type: 2}
-  _rotation: {fileID: 11400000, guid: a7e9818b4e7e70048ba82dbd57f78809, type: 2}
+  _attack: {fileID: 11400000, guid: 98170779eb814744da7b906c6a085871, type: 2}

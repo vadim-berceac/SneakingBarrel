@@ -24,8 +24,7 @@ public class MoveState : State
 
     public override void UpdateState(CharacterFSM controller)
     {
-        SwitchCheck(controller);
-        Rotate(controller);
+        base.UpdateState(controller);
         if(controller.Input.CurrentVelocity > _animationMinSpeed)
         {
             controller.Animator.SetFloat("CurrentVelocity", controller.Input.CurrentVelocity);
@@ -34,13 +33,5 @@ public class MoveState : State
         {
             controller.Animator.SetFloat("CurrentVelocity", _animationMinSpeed);
         }
-    }
-
-    private void Rotate(CharacterFSM controller)
-    {
-        Quaternion lookRotation = Quaternion.LookRotation
-            (new Vector3(controller.Input.RotationDirection.x, 0, controller.Input.RotationDirection.z));
-        controller.CachedTransform.rotation = Quaternion.Slerp
-            (controller.CachedTransform.rotation, lookRotation, Time.deltaTime * 5);
     }
 }

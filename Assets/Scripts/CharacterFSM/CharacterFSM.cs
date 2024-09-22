@@ -3,7 +3,6 @@ using Zenject;
 
 public class CharacterFSM : MonoBehaviour 
 {
-    [SerializeField] private bool _isAI = false;
     [SerializeField] private IFSMInput _input;
     [SerializeField] private Animator _animator;
 

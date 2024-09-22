@@ -17,14 +17,12 @@ public class IdleState : State
     {
         if (controller.Input.IsMoving)
         {
-            Debug.LogWarning(2);
             SwitchToState(controller, _moveState);
         }
     }
 
     public override void UpdateState(CharacterFSM controller)
     {
-        Debug.Log("test idle");
-        SwitchCheck(controller);
+        base.UpdateState(controller);
     }
 }
