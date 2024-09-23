@@ -11,15 +11,17 @@ public abstract class State : ScriptableObject
     protected State _moveState;
     protected State _aimState;
     protected State _attackState;
+    protected State _attackedState;
 
     [Inject]
     private void Construct(IdleState idleState, MoveState moveState,
-        AttackState attackState, AimState aimState)
+        AttackState attackState, AimState aimState, AttackedState attackedState)
     {
         _idleState = idleState;
         _moveState = moveState;
         _aimState = aimState;
         _attackState = attackState;
+        _attackedState = attackedState;
     }
 
     protected abstract void SwitchCheck(CharacterFSM controller);

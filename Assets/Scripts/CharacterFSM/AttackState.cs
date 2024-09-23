@@ -1,12 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "AttackState", menuName = "Scriptable Objects/AttackState")]
 public class AttackState : State
 {
+    public static UnityAction OnPlayerAttack;
     public override void EnterState(CharacterFSM controller)
     {
         controller.Animator.StopPlayback();
         controller.Animator.Play(_animationName, _animationLayer);
+        OnPlayerAttack?.Invoke();
     }
 
     public override void UpdateState(CharacterFSM controller)
@@ -21,9 +24,6 @@ public class AttackState : State
 
     protected override void SwitchCheck(CharacterFSM controller)
     {
-        if (controller.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-        {
-            SwitchToState(controller, _idleState);
-        }
+
     }
 }

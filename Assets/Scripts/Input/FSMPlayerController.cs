@@ -8,6 +8,7 @@ public class FSMPlayerController : MonoBehaviour, IFSMInput
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private CharacterFSM _characterFSM;
     [SerializeField] private Collider _collider;
+    [SerializeField] private Animator _barrelAnimator;
     private InputAction _moveAction;
     private Transform _cashedTransform;
     private Vector3 _targetDirection;
@@ -16,14 +17,15 @@ public class FSMPlayerController : MonoBehaviour, IFSMInput
     private float _lerpTime = 0;
     private Vector3 _rotationDirection = Vector3.zero;
     private readonly float _smoothing = 0.25f;
+    private bool _isAttacked = false;
 
+    public NavMeshAgent Agent => _agent;
     public bool IsMoving => _moveVector != Vector3.zero;
     public CharacterFSM CharacterFSM => _characterFSM;
     public Vector3 RotationDirection => _rotationDirection;
-
     public float CurrentVelocity => _agent.velocity.sqrMagnitude;
-
     public bool CanAttack => false;
+    public bool IsAttacked => _isAttacked;
 
     private void Awake()
     {
@@ -33,6 +35,7 @@ public class FSMPlayerController : MonoBehaviour, IFSMInput
         _moveAction.performed += HandleMoveAction;
         _moveAction.canceled += HandleMoveAction;
         _moveAction.Enable();
+        AttackState.OnPlayerAttack += OnPlayerIsAttacked;
     }
 
     private void HandleMoveAction(InputAction.CallbackContext context)
@@ -43,6 +46,7 @@ public class FSMPlayerController : MonoBehaviour, IFSMInput
 
     private void Update()
     {
+        if (_isAttacked) { return; }
         _collider.enabled = IsMoving;
         UpdateMovement();
         UpdateRotationDirection();
@@ -54,6 +58,7 @@ public class FSMPlayerController : MonoBehaviour, IFSMInput
         _moveAction.started -= HandleMoveAction;
         _moveAction.performed -= HandleMoveAction;
         _moveAction.canceled -= HandleMoveAction;
+        AttackState.OnPlayerAttack -= OnPlayerIsAttacked;
     }
 
     private void UpdateMovement()
@@ -78,5 +83,11 @@ public class FSMPlayerController : MonoBehaviour, IFSMInput
         {
             _rotationDirection = _moveVector;
         }        
+    }
+
+    private void OnPlayerIsAttacked()
+    {
+        _isAttacked = true;
+        _barrelAnimator.Play("Explosion");
     }
 }

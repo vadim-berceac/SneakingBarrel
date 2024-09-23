@@ -5129,7 +5129,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0.33, y: -0.06, z: -0.049}
+        value: {x: 0.675, y: -0.091, z: -0.079}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -5139,7 +5139,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: MainRoot/MainHub001/MainSpine1/MainSpine2/MainSpine3/Barrel_with_animations
+    path: MainRoot/MainHub001/MainSpine1/MainSpine2/MainSpine3/Destruction_barrel
   m_ScaleCurves:
   - curve:
       serializedVersion: 2
@@ -6405,7 +6405,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2387662831
+      path: 369620369
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -28159,7 +28159,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.33
+        value: 0.675
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -28170,7 +28170,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: MainRoot/MainHub001/MainSpine1/MainSpine2/MainSpine3/Barrel_with_animations
+    path: MainRoot/MainHub001/MainSpine1/MainSpine2/MainSpine3/Destruction_barrel
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -28180,7 +28180,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -0.06
+        value: -0.091
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -28191,7 +28191,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: MainRoot/MainHub001/MainSpine1/MainSpine2/MainSpine3/Barrel_with_animations
+    path: MainRoot/MainHub001/MainSpine1/MainSpine2/MainSpine3/Destruction_barrel
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -28201,7 +28201,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -0.049
+        value: -0.079
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -28212,7 +28212,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: MainRoot/MainHub001/MainSpine1/MainSpine2/MainSpine3/Barrel_with_animations
+    path: MainRoot/MainHub001/MainSpine1/MainSpine2/MainSpine3/Destruction_barrel
     classID: 4
     script: {fileID: 0}
     flags: 0

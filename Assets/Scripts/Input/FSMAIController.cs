@@ -24,10 +24,13 @@ public class FSMAIController : MonoBehaviour, IFSMInput
     private bool _canAttack = false;
     private Transform _cashedTransform;
     private float _basicAgentSpeed;
+
+    public NavMeshAgent Agent => _agent;
     public bool IsMoving => _agent.velocity.sqrMagnitude > 0;
     public float CurrentVelocity => _agent.velocity.sqrMagnitude;
     public Vector3 RotationDirection => _rotationDirection;
     public bool CanAttack => _canAttack;
+    public bool IsAttacked => false;
 
     private void Awake()
     {

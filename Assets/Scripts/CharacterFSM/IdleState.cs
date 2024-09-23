@@ -23,6 +23,10 @@ public class IdleState : State
         {
             SwitchToState(controller, _moveState);
         }
+        if(!controller.IsAI && controller.Input.IsAttacked)
+        {
+            SwitchToState(controller, _attackedState);
+        }
     }
 
     public override void UpdateState(CharacterFSM controller)

@@ -16,3 +16,4 @@ MonoBehaviour:
   _move: {fileID: 11400000, guid: 131fc9a35d07698428a9a15b1f03dd30, type: 2}
   _aim: {fileID: 11400000, guid: 1e8a857a29ee2684aba94e8020bd838e, type: 2}
   _attack: {fileID: 11400000, guid: 98170779eb814744da7b906c6a085871, type: 2}
+  _acked: {fileID: 11400000, guid: bf7a1985bee95f14eb18f55c43f6c739, type: 2}

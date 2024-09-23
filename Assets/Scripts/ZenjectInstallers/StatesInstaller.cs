@@ -8,6 +8,7 @@ public class StatesInstaller : ScriptableObjectInstaller<StatesInstaller>
     [SerializeField] private MoveState _move;
     [SerializeField] private AimState _aim;
     [SerializeField] private AttackState _attack;
+    [SerializeField] private AttackedState _acked;
 
     public override void InstallBindings()
     {
@@ -15,5 +16,6 @@ public class StatesInstaller : ScriptableObjectInstaller<StatesInstaller>
         Container.Bind<MoveState>().FromNewScriptableObject(_move).AsSingle().NonLazy();
         Container.Bind<AimState>().FromScriptableObject(_aim).AsSingle().NonLazy();
         Container.Bind<AttackState>().FromNewScriptableObject(_attack).AsSingle().NonLazy();
+        Container.Bind<AttackedState>().FromNewScriptableObject(_acked).AsSingle().NonLazy();  
     }
 }
